@@ -1,7 +1,7 @@
 const city = document.querySelector('.location');
 const cityDate = document.querySelector('.loc-date');
 const input = document.querySelector('input');
-const searchBtn = document.querySelector('button');
+const searchBtn = document.querySelector('.search-btn');
 const currentTemp = document.querySelector('.current-temp');
 const currentAtmosphere = document.querySelector('.atmosphere');
 const feels = document.querySelector('.feels');
@@ -36,6 +36,10 @@ const dayWeatherFour = document.querySelector('.day4-weather');
 const dayWeatherFive = document.querySelector('.day5-weather');
 const dayWeatherSix = document.querySelector('.day6-weather');
 const dayWeatherSeven = document.querySelector('.day7-weather');
+const errorMessage = document.querySelector('.error-message');
+const errorDiv = document.querySelector('.error-cont');
+const okayBtn = document.getElementById('okay');
+const loadingElement = document.querySelector('.loading');
 
 
 
@@ -44,74 +48,98 @@ const dayWeatherSeven = document.querySelector('.day7-weather');
 
 
 async function getWeather(){
-    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=76ac74ae107c46c092d223136230410&q=${input.value}&days=7`, {mode: 'cors'});
-    const locData = await response.json();
-    console.log(locData);
-    city.textContent = locData.location.name;
-    cityDate.textContent = locData.location.localtime;
-    currentTemp.textContent = locData.current.feelslike_c;
-    currentAtmosphere.textContent = locData.current.condition.text;
-    currentWeatherIcon.src = locData.current.condition.icon;
-    feels.textContent = `Feels like: ${locData.current.feelslike_c} °C`;
-    humidity.textContent = `Humidity: ${locData.current.humidity} %`;
-    wind.textContent = `Wind: ${locData.current.wind_kph} km/h`;
+    
+    try {
+        loadingElement.style.display = 'block';
 
-    //seven day forcast
-    forecastData = locData.forecast.forecastday;
-    console.log(forecastData);
-
-    dayOne.textContent = forecastData[0].date;
-    dayOne_icon.src = forecastData[0].day.condition.icon;
-    dayWeatherOne.textContent = forecastData[0].day.condition.text;
-    tempRangeOne.textContent = `${forecastData[0].day.maxtemp_c}° - ${forecastData[0].day.mintemp_c}°`;
-
-    dayTwo.textContent = forecastData[1].date;
-    dayTwo_icon.src = forecastData[1].day.condition.icon;
-    dayWeatherTwo.textContent = forecastData[1].day.condition.text;
-    tempRangeTwo.textContent = `${forecastData[1].day.maxtemp_c}° - ${forecastData[1].day.mintemp_c}°`;
-
-    dayThree.textContent = forecastData[2].date;
-    dayThree_icon.src = forecastData[2].day.condition.icon;
-    dayWeatherThree.textContent = forecastData[2].day.condition.text;
-    tempRangeThree.textContent = `${forecastData[2].day.maxtemp_c}° - ${forecastData[2].day.mintemp_c}°`;
-
-    dayFour.textContent = forecastData[3].date;
-    dayFour_icon.src = forecastData[3].day.condition.icon;
-    dayWeatherFour.textContent = forecastData[3].day.condition.text;
-    tempRangeFour.textContent = `${forecastData[3].day.maxtemp_c}° - ${forecastData[3].day.mintemp_c}°`;
+        setTimeout(async ()=>{
+            const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=76ac74ae107c46c092d223136230410&q=${input.value}&days=7`, {mode: 'cors'});
 
 
+        if(!response.ok){
+            const errorData = await response.json();
+            const errorNote = errorData.error.message
+            displayErrorMessage(errorNote);
 
-    // for (let i=0 ; i< forecastData.length; i++){
+        }else{
+            const locData = await response.json();
+            console.log(locData);
+            city.textContent = locData.location.name;
+            cityDate.textContent = locData.location.localtime;
+            currentTemp.textContent = locData.current.feelslike_c;
+            currentAtmosphere.textContent = locData.current.condition.text;
+            currentWeatherIcon.src = locData.current.condition.icon;
+            feels.textContent = `Feels like: ${locData.current.feelslike_c} °C`;
+            humidity.textContent = `Humidity: ${locData.current.humidity} %`;
+            wind.textContent = `Wind: ${locData.current.wind_kph} km/h`;
 
-    //     if(i===0){
-    //         dayOne.textContent = forecastData[i].date;
-    //         dayOne_icon.src = forecastData[i].day.condition.icon;
-    //         dayWeatherOne.textContent = forecastData[i].day.condition.text;
-    //         tempRangeOne.textContent = `${forecastData[i].day.maxtemp_c}° - ${forecastData[i].day.mintemp_c}°`;
+            //seven day forcast
+            forecastData = locData.forecast.forecastday;
+            console.log(forecastData);
 
-    //     }else if(i === 1){
-    //         dayTwo.textContent = forecastData[i].date;
-    //         dayTwo_icon.src = forecastData[i].day.condition.icon;
-    //         dayWeatherTwo.textContent = forecastData[i].day.condition.text;
-    //         tempRangeTwo.textContent = `${forecastData[i].day.maxtemp_c}° - ${forecastData[i].day.mintemp_c}°`;
-    //     }else if(i === 2){
-    //         dayThree.textContent = forecastData[i].date;
-    //         dayThree_icon.src = forecastData[i].day.condition.icon;
-    //         dayWeatherThree.textContent = forecastData[i].day.condition.text;
-    //         tempRangeThree.textContent = `${forecastData[i].day.maxtemp_c}° - ${forecastData[i].day.mintemp_c}°`;
+            dayOne.textContent = forecastData[0].date;
+            dayOne_icon.src = forecastData[0].day.condition.icon;
+            dayWeatherOne.textContent = forecastData[0].day.condition.text;
+            tempRangeOne.textContent = `${forecastData[0].day.maxtemp_c}° - ${forecastData[0].day.mintemp_c}°`;
 
-    //     }else if(i === 3){
-    //         dayFour.textContent = forecastData[i].date;
-    //         dayFour_icon.src = forecastData[i].day.condition.icon;
-    //         dayWeatherFour.textContent = forecastData[i].day.condition.text;
-    //         tempRangeFour.textContent = `${forecastData[i].day.maxtemp_c}° - ${forecastData[i].day.mintemp_c}°`;
+            dayTwo.textContent = forecastData[1].date;
+            dayTwo_icon.src = forecastData[1].day.condition.icon;
+            dayWeatherTwo.textContent = forecastData[1].day.condition.text;
+            tempRangeTwo.textContent = `${forecastData[1].day.maxtemp_c}° - ${forecastData[1].day.mintemp_c}°`;
 
-    //     }
-     
-    // }
+            dayThree.textContent = forecastData[2].date;
+            dayThree_icon.src = forecastData[2].day.condition.icon;
+            dayWeatherThree.textContent = forecastData[2].day.condition.text;
+            tempRangeThree.textContent = `${forecastData[2].day.maxtemp_c}° - ${forecastData[2].day.mintemp_c}°`;
+
+            dayFour.textContent = forecastData[3].date;
+            dayFour_icon.src = forecastData[3].day.condition.icon;
+            dayWeatherFour.textContent = forecastData[3].day.condition.text;
+            tempRangeFour.textContent = `${forecastData[3].day.maxtemp_c}° - ${forecastData[3].day.mintemp_c}°`;
+
+            dayFive.textContent = forecastData[4].date;
+            dayFive_icon.src = forecastData[4].day.condition.icon;
+            dayWeatherFive.textContent = forecastData[4].day.condition.text;
+            tempRangeFive.textContent = `${forecastData[4].day.maxtemp_c}° - ${forecastData[4].day.mintemp_c}°`;
+
+            daySix.textContent = forecastData[5].date;
+            daySix_icon.src = forecastData[5].day.condition.icon;
+            dayWeatherSix.textContent = forecastData[5].day.condition.text;
+            tempRangeSix.textContent = `${forecastData[5].day.maxtemp_c}° - ${forecastData[5].day.mintemp_c}°`;
+
+            daySeven.textContent = forecastData[6].date;
+            daySeven_icon.src = forecastData[6].day.condition.icon;
+            dayWeatherSeven.textContent = forecastData[6].day.condition.text;
+            tempRangeSeven.textContent = `${forecastData[6].day.maxtemp_c}° - ${forecastData[6].day.mintemp_c}°`;
+
+        }
+
+            loadingElement.style.display = 'none';
+        },2000)
+        
+    } catch(error){
+         console.error("Error: " + error);
+         loadingElement.style.display = 'none';
+
+    }
+
+  
+
+
+    
+}
+
+function displayErrorMessage(message){
+    console.log(message);
+    errorMessage.textContent = `${message}`;
+    errorDiv.style.display= 'block';
 }
 
 
 
 searchBtn.addEventListener('click', getWeather)
+
+okayBtn.addEventListener('click', ()=>{
+    errorDiv.style.display='none';
+    input.value = '';
+})

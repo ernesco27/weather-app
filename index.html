@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b0542e0689.js" crossorigin="anonymous"></script>
     <script src="/app.js" defer></script>
 </head>
 <body>
@@ -23,7 +24,7 @@
                     </div>
                     <div class="search-cont">
                         <input type="text" placeholder="Enter city name">
-                        <button>search</button>
+                        <button class="search-btn">search</button>
                     </div>
                 </div>
                 <div class="mid-sect">
@@ -86,6 +87,30 @@
                         <p class="range range7">23° - 14°</p>
                         <p class="day7-weather">Overcast</p>
                     </div>
+                </div>
+            </div>
+            <div class="error-cont">
+                <div>  
+                    <p class="error-message">OOPS...SOME ERROR OCCURRED</p>
+                    <button id='okay'>OKAY</button>   
+                </div>
+            </div>
+            <div class="loading">
+                <div id="wifi-loader">
+                    <svg class="circle-outer" viewBox="0 0 86 86">
+                        <circle class="back" cx="43" cy="43" r="40"></circle>
+                        <circle class="front" cx="43" cy="43" r="40"></circle>
+                        <circle class="new" cx="43" cy="43" r="40"></circle>
+                    </svg>
+                    <svg class="circle-middle" viewBox="0 0 60 60">
+                        <circle class="back" cx="30" cy="30" r="27"></circle>
+                        <circle class="front" cx="30" cy="30" r="27"></circle>
+                    </svg>
+                    <svg class="circle-inner" viewBox="0 0 34 34">
+                        <circle class="back" cx="17" cy="17" r="14"></circle>
+                        <circle class="front" cx="17" cy="17" r="14"></circle>
+                    </svg>
+                    <div class="text" data-text="Searching"></div>
                 </div>
             </div>
         </div>
