@@ -23,7 +23,6 @@
 #card{
     width: 70vw;
     height: 90vh;
-    /* background-color: red; */
     position: absolute;
     top: 2rem;
     left: 15%;
@@ -36,11 +35,20 @@
 }
 
 #card>img{
-    max-width: 100%;
+    width: 70rem;
     height: 100%;
     
-  
 }
+
+#day-image, #night-image{
+    transition: all 1s ease;
+}
+
+#night-image{
+    display: none;
+}
+
+
 
 .city-container{
     position: absolute;
@@ -52,28 +60,56 @@
 .top-sect{
     width: 60vw;
     display: flex;
-    /* gap: 4rem; */
     justify-content: space-between;
 
 }
 
+
+
 .city-name p:nth-child(1){
     font-size: 2.5rem;
     font-weight: 700;
-    color: white;
+    color: rgb(41, 41, 151);
+    transition: all 1s ease;
 }
 
 .city-name p:nth-child(2){
     font-size: 0.8rem;
-    color: white;
-    margin-top: -0.5rem
+    color: rgb(41, 41, 151);
+    margin-top: -0.5rem;
+    transition: all 1s ease;
+    
 }
 
 .city-name p:nth-child(3) {
     font-size: 0.8rem;
-    color: white;
-    margin-top: 0.1rem
+    color: rgb(41, 41, 151);
+    margin-top: 0.1rem;
+    transition: all 1s ease;
 }
+
+
+.city-nameNight p:nth-child(1) {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    transition: all 1s ease;
+}
+
+.city-nameNight p:nth-child(2) {
+    font-size: 0.8rem;
+    color: white;
+    margin-top: -0.5rem;
+    transition: all 1s ease;
+}
+
+.city-nameNight p:nth-child(3) {
+    font-size: 0.8rem;
+    color: white;
+    margin-top: 0.1rem;
+    transition: all 1s ease;
+}
+
 
 input{
     width: 15rem;
@@ -84,18 +120,7 @@ input{
     border: none;
 }
 
-/* .search-btn{
-    height: 2rem;
-    width: 4rem;
-    background-color: rgb(41, 41, 151);
-    border-radius: 0.5rem;
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: none;
-    color: white;
-    cursor: pointer;
-} */
+
 
 .search-btn {
     background: rgb(41, 41, 151);
@@ -154,14 +179,6 @@ input{
     transform: scale(0.95);
 }
 
-
-
-
-
-
-
-
-
 .mid-sect{
     width: 60vw;
     display: flex;
@@ -179,12 +196,34 @@ input{
 .temp div:nth-child(1){
     font-size: 7rem;
     color: rgb(41, 41, 151);
+    transition: all 1s ease;
 }
 
 .temp div:nth-child(2) {
     font-size: 1rem;
     color: rgb(41, 41, 151);
+    transition: all 1s ease;
 }
+
+.tempNight{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+}
+
+.tempNight div:nth-child(1) {
+    font-size: 7rem;
+    color: white;
+    transition: all 1s ease;
+}
+
+.tempNight div:nth-child(2) {
+    font-size: 1rem;
+    color: white;
+    transition: all 1s ease;
+}
+
 
 .info{
     display: flex;
@@ -200,7 +239,32 @@ input{
 .info > div{
     font-size: 0.8rem;
     color: rgb(41, 41, 151);
+    transition: all 1s ease;
 }
+
+
+
+.infoNight {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.infoNight>img {
+    width: 12rem;
+    height: 12rem;
+}
+
+.infoNight>div {
+    font-size: 0.8rem;
+    color: white;
+    transition: all 1s ease;
+}
+
+
+
+
+
 
 .down-sect{
     width: 60vw;
@@ -481,3 +545,66 @@ input{
     gap: 0.8rem;
 }
 
+
+
+/* The switch - the box around the slider */
+.switch {
+    display: block;
+    --width-of-switch: 3.5em;
+    --height-of-switch: 2em;
+    /* size of sliding icon -- sun and moon */
+    --size-of-icon: 1.4em;
+    /* it is like a inline-padding of switch */
+    --slider-offset: 0.3em;
+    position: absolute;
+    top: 2.5rem;
+    right: 3rem;
+    z-index: 1000;
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f4f4f5;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: var(--size-of-icon, 1.4em);
+    width: var(--size-of-icon, 1.4em);
+    border-radius: 20px;
+    left: var(--slider-offset, 0.3em);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+    ;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #303136;
+}
+
+input:checked+.slider:before {
+    left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
+    background: #303136;
+    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}

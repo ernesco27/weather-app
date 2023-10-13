@@ -1,6 +1,6 @@
 const city = document.querySelector('.location');
 const cityDate = document.querySelector('.loc-date');
-const input = document.querySelector('input');
+const input = document.querySelector('#search-input');
 const searchBtn = document.querySelector('.search-btn');
 const currentTemp = document.querySelector('.current-temp');
 const currentAtmosphere = document.querySelector('.atmosphere');
@@ -41,8 +41,17 @@ const errorDiv = document.querySelector('.error-cont');
 const okayBtn = document.getElementById('okay');
 const loadingElement = document.querySelector('.loading');
 const country = document.querySelector('.country');
+const toggleSwitch = document.querySelector('.mode');
 
+const dayImage = document.querySelector('#day-image');
+const nightImage = document.querySelector('#night-image');
+const dayImage1 = document.querySelector('#day-image1');
+const nightImage1 = document.querySelector('#night-image1');
+const tempDiv = document.querySelector('.temp');
+const infoDiv = document.querySelector('.info');
+const cityDiv = document.querySelector('.city-name');
 
+let isDayMode = true;
 
 
 
@@ -145,3 +154,46 @@ okayBtn.addEventListener('click', ()=>{
     errorDiv.style.display='none';
     input.value = '';
 })
+
+toggleSwitch.addEventListener('click', toggleMode);
+
+function toggleMode(){
+    //toggle between images on click of input type checkbox
+    if (toggleSwitch.checked === true){
+        dayImage.style.display = 'none';
+        dayImage1.style.display = 'none';
+        // dayImage.classList.add('day-image');
+        tempDiv.classList.remove('temp');
+        tempDiv.classList.add('tempNight');
+
+        infoDiv.classList.remove('info');
+        infoDiv.classList.add('infoNight')
+        nightImage.style.display = 'block';
+        nightImage1.style.display = 'block';
+        
+
+        cityDiv.classList.remove('city-name');
+        cityDiv.classList.add('city-nameNight');
+        isDayMode = false;
+
+
+    }
+    else{
+        dayImage.style.display = 'block';
+        dayImage1.style.display = 'block';
+        tempDiv.classList.remove('tempNight');
+        tempDiv.classList.add('temp');
+
+        infoDiv.classList.remove('infoNight');
+        infoDiv.classList.add('info')
+
+        cityDiv.classList.remove('city-nameNight');
+        cityDiv.classList.add('city-name');
+        nightImage.style.display = 'none';
+        nightImage1.style.display = 'none';
+        isDayMode = true;
+
+    }
+
+    isDayMode = !isDayMode;
+}

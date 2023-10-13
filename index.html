@@ -13,9 +13,15 @@
 </head>
 <body>
     <div id="container">
-        <img src="/images/white-cloud-blue-sky-min.jpg" alt="sky">
+        <img id="day-image1" src="/images/white-cloud-blue-sky-min.jpg" alt="sky">
+        <img id="night-image1" src="/images/nightsky2.jpg" alt="night sky">
+        <label class="switch">
+            <input class="mode" type="checkbox">
+            <span class="slider"></span>
+        </label>
         <div id="card">
-            <img src="/images/sunrise-blue-sky-panorama-early-morning-dawn-5k-5854x2415-3644-min.jpg" alt="sun rise">
+            <img id="day-image" src="/images/sunrise-blue-sky-panorama-early-morning-dawn-5k-5854x2415-3644-min.jpg" alt="sun rise"> 
+            <img id="night-image" src="/images/nightsky.jpg" alt="night sky"> 
             <div class="city-container">
                 <div class="top-sect">
                     <div class="city-name">
@@ -24,7 +30,7 @@
                         <p class="loc-date">Thursday, 31 August 2023</p>
                     </div>
                     <div class="search-cont">
-                        <input type="text" placeholder="Enter city name">
+                        <input id="search-input" type="text" placeholder="Enter city name">
                         <button class="search-btn"> Search
                             <div class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -34,7 +40,6 @@
                                 </svg>
                             </div>
                         </button>
-                        <!-- <button class="search-btn">search</button> -->
                     </div>
                 </div>
                 <div class="mid-sect">
