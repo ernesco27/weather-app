@@ -20,11 +20,21 @@
                 <div class="top-sect">
                     <div class="city-name">
                         <p class="location">Tema</p>
+                        <p class="country">Ghana</p>
                         <p class="loc-date">Thursday, 31 August 2023</p>
                     </div>
                     <div class="search-cont">
                         <input type="text" placeholder="Enter city name">
-                        <button class="search-btn">search</button>
+                        <button class="search-btn"> Search
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                    <path fill="currentColor"
+                                        d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path>
+                                </svg>
+                            </div>
+                        </button>
+                        <!-- <button class="search-btn">search</button> -->
                     </div>
                 </div>
                 <div class="mid-sect">
@@ -38,9 +48,18 @@
                     <div class="info">
                         <img class="current-icon" src="/images/suncloud-removebg-preview.png" alt="cloud">
                         <div>
-                            <p class="feels">Feels like: 31°C</p>
-                            <p class="humid">Humidity: 15%</p>
-                            <p class="wind">Wind: 14 km/h</p>
+                            <span class="weather-iconSP">
+                                <i class="fa-solid fa-temperature-three-quarters"></i>
+                                <p class="feels">Feels like: 31°C</p>
+                            </span>
+                            <span class="weather-iconSP">
+                                <i class="fa-solid fa-droplet"></i>
+                                <p class="humid">Humidity: 15%</p>
+                            </span>
+                            <span class="weather-iconSP">
+                                <i class="fa-solid fa-wind"></i>
+                                <p class="wind">Wind: 14 km/h</p>
+                            </span>
                         </div>
                     </div>
                 </div>

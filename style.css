@@ -66,7 +66,13 @@
 .city-name p:nth-child(2){
     font-size: 0.8rem;
     color: white;
-    margin-top: -1rem
+    margin-top: -0.5rem
+}
+
+.city-name p:nth-child(3) {
+    font-size: 0.8rem;
+    color: white;
+    margin-top: 0.1rem
 }
 
 input{
@@ -78,7 +84,7 @@ input{
     border: none;
 }
 
-.search-btn{
+/* .search-btn{
     height: 2rem;
     width: 4rem;
     background-color: rgb(41, 41, 151);
@@ -88,13 +94,79 @@ input{
     right: 0;
     border: none;
     color: white;
+    cursor: pointer;
+} */
+
+.search-btn {
+    background: rgb(41, 41, 151);
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em rgb(41, 41, 151);
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2rem;
+    width: 6rem;
+    padding-right: 3.3em;
+    cursor: pointer;
 }
+
+.search-btn .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em rgb(41, 41, 151);
+    right: 0.3em;
+    transition: all 0.3s;
+}
+
+.search-btn:hover .icon {
+    width: calc(100% - 0.6em);
+}
+
+.search-btn .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: rgb(41, 41, 151);
+}
+
+.search-btn:hover .icon svg {
+    transform: translateX(0.1em);
+}
+
+.search-btn:active .icon {
+    transform: scale(0.95);
+}
+
+
+
+
+
+
+
+
 
 .mid-sect{
     width: 60vw;
     display: flex;
     justify-content: space-between;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     /* border: 1px solid red; */
 }
 
@@ -105,13 +177,13 @@ input{
 }
 
 .temp div:nth-child(1){
-    font-size: 8rem;
-    color: white;
+    font-size: 7rem;
+    color: rgb(41, 41, 151);
 }
 
 .temp div:nth-child(2) {
     font-size: 1rem;
-    color: white;
+    color: rgb(41, 41, 151);
 }
 
 .info{
@@ -127,7 +199,7 @@ input{
 
 .info > div{
     font-size: 0.8rem;
-    color: white;
+    color: rgb(41, 41, 151);
 }
 
 .down-sect{
@@ -402,4 +474,10 @@ input{
 }
 
 
+.weather-iconSP{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
 

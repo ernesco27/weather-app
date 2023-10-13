@@ -40,6 +40,7 @@ const errorMessage = document.querySelector('.error-message');
 const errorDiv = document.querySelector('.error-cont');
 const okayBtn = document.getElementById('okay');
 const loadingElement = document.querySelector('.loading');
+const country = document.querySelector('.country');
 
 
 
@@ -65,6 +66,7 @@ async function getWeather(){
             const locData = await response.json();
             console.log(locData);
             city.textContent = locData.location.name;
+            country.textContent = `${locData.location.country} (${locData.location.region})`;
             cityDate.textContent = locData.location.localtime;
             currentTemp.textContent = locData.current.feelslike_c;
             currentAtmosphere.textContent = locData.current.condition.text;
