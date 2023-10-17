@@ -50,10 +50,18 @@ const nightImage1 = document.querySelector('#night-image1');
 const tempDiv = document.querySelector('.temp');
 const infoDiv = document.querySelector('.info');
 const cityDiv = document.querySelector('.city-name');
+const inputForm = document.querySelector('form');
 
 let isDayMode = true;
 
 
+
+
+
+function isOnline() {
+    return navigator.onLine
+
+}
 
 
 
@@ -69,11 +77,12 @@ async function getWeather(){
         if(!response.ok){
             const errorData = await response.json();
             const errorNote = errorData.error.message
+            //console.log(errorData);
             displayErrorMessage(errorNote);
 
         }else{
             const locData = await response.json();
-            console.log(locData);
+            //console.log(locData);
             city.textContent = locData.location.name;
             country.textContent = `${locData.location.country} (${locData.location.region})`;
             cityDate.textContent = locData.location.localtime;
@@ -86,7 +95,7 @@ async function getWeather(){
 
             //seven day forcast
             forecastData = locData.forecast.forecastday;
-            console.log(forecastData);
+            //console.log(forecastData);
 
             dayOne.textContent = forecastData[0].date;
             dayOne_icon.src = forecastData[0].day.condition.icon;
@@ -141,14 +150,26 @@ async function getWeather(){
 }
 
 function displayErrorMessage(message){
-    console.log(message);
+    //console.log(message);
     errorMessage.textContent = `${message}`;
     errorDiv.style.display= 'block';
 }
 
 
 
-searchBtn.addEventListener('click', getWeather)
+searchBtn.addEventListener('click', ()=>{
+    if(isOnline() && input.value){
+        getWeather()
+    }else if(isOnline() && !input.value){
+        const error = 'Please enter a city';
+        displayErrorMessage(error);
+    }else{
+        const offline = 'Please check your internet connection.'
+        displayErrorMessage(offline);
+    }
+
+    
+})
 
 okayBtn.addEventListener('click', ()=>{
     errorDiv.style.display='none';
