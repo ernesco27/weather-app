@@ -71,7 +71,7 @@ async function getWeather(){
         loadingElement.style.display = 'block';
 
         setTimeout(async ()=>{
-            const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=76ac74ae107c46c092d223136230410&q=${input.value}&days=7`, {mode: 'cors'});
+            const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=76ac74ae107c46c092d223136230410&q=${input.value}&days=7`, {mode: 'cors'});
 
 
         if(!response.ok){
