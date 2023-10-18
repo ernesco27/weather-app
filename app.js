@@ -112,25 +112,25 @@ async function getWeather(){
             dayWeatherThree.textContent = forecastData[2].day.condition.text;
             tempRangeThree.textContent = `${forecastData[2].day.maxtemp_c}° - ${forecastData[2].day.mintemp_c}°`;
 
-            dayFour.textContent = forecastData[3].date;
-            dayFour_icon.src = forecastData[3].day.condition.icon;
-            dayWeatherFour.textContent = forecastData[3].day.condition.text;
-            tempRangeFour.textContent = `${forecastData[3].day.maxtemp_c}° - ${forecastData[3].day.mintemp_c}°`;
+            // dayFour.textContent = forecastData[3].date;
+            // dayFour_icon.src = forecastData[3].day.condition.icon;
+            // dayWeatherFour.textContent = forecastData[3].day.condition.text;
+            // tempRangeFour.textContent = `${forecastData[3].day.maxtemp_c}° - ${forecastData[3].day.mintemp_c}°`;
 
-            dayFive.textContent = forecastData[4].date;
-            dayFive_icon.src = forecastData[4].day.condition.icon;
-            dayWeatherFive.textContent = forecastData[4].day.condition.text;
-            tempRangeFive.textContent = `${forecastData[4].day.maxtemp_c}° - ${forecastData[4].day.mintemp_c}°`;
+            // dayFive.textContent = forecastData[4].date;
+            // dayFive_icon.src = forecastData[4].day.condition.icon;
+            // dayWeatherFive.textContent = forecastData[4].day.condition.text;
+            // tempRangeFive.textContent = `${forecastData[4].day.maxtemp_c}° - ${forecastData[4].day.mintemp_c}°`;
 
-            daySix.textContent = forecastData[5].date;
-            daySix_icon.src = forecastData[5].day.condition.icon;
-            dayWeatherSix.textContent = forecastData[5].day.condition.text;
-            tempRangeSix.textContent = `${forecastData[5].day.maxtemp_c}° - ${forecastData[5].day.mintemp_c}°`;
+            // daySix.textContent = forecastData[5].date;
+            // daySix_icon.src = forecastData[5].day.condition.icon;
+            // dayWeatherSix.textContent = forecastData[5].day.condition.text;
+            // tempRangeSix.textContent = `${forecastData[5].day.maxtemp_c}° - ${forecastData[5].day.mintemp_c}°`;
 
-            daySeven.textContent = forecastData[6].date;
-            daySeven_icon.src = forecastData[6].day.condition.icon;
-            dayWeatherSeven.textContent = forecastData[6].day.condition.text;
-            tempRangeSeven.textContent = `${forecastData[6].day.maxtemp_c}° - ${forecastData[6].day.mintemp_c}°`;
+            // daySeven.textContent = forecastData[6].date;
+            // daySeven_icon.src = forecastData[6].day.condition.icon;
+            // dayWeatherSeven.textContent = forecastData[6].day.condition.text;
+            // tempRangeSeven.textContent = `${forecastData[6].day.maxtemp_c}° - ${forecastData[6].day.mintemp_c}°`;
 
         }
 
