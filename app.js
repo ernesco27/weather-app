@@ -68,7 +68,8 @@ function isOnline() {
 async function getWeather(){
     
     try {
-        loadingElement.style.display = 'block';
+        //loadingElement.style.display = 'block';
+        loadingElement.classList.toggle('showing');
 
         setTimeout(async ()=>{
             const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=76ac74ae107c46c092d223136230410&q=${input.value}&days=7`, {mode: 'cors'});
@@ -114,7 +115,8 @@ async function getWeather(){
 
         }
 
-            loadingElement.style.display = 'none';
+            //loadingElement.style.display = 'none';
+            loadingElement.classList.remove('showing');
         },2000)
         
     } catch(error){
@@ -132,7 +134,10 @@ async function getWeather(){
 function displayErrorMessage(message){
     //console.log(message);
     errorMessage.textContent = `${message}`;
-    errorDiv.style.display= 'block';
+    //errorDiv.style.display= 'block';
+    errorDiv.classList.remove('off-view');
+    errorDiv.classList.toggle('in-view');
+    
 }
 
 
@@ -149,10 +154,14 @@ searchBtn.addEventListener('click', ()=>{
     }
 
     
-})
+});
+
+
 
 okayBtn.addEventListener('click', ()=>{
-    errorDiv.style.display='none';
+    //errorDiv.style.display='none';
+    errorDiv.classList.remove('in-view');
+    errorDiv.classList.add('off-view');
     input.value = '';
 })
 
